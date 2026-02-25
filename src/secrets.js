@@ -158,7 +158,10 @@ const selectAndAppendResults = async (
   secretRequest,
   results
 ) => {
-  if (!selector.includes(".")) {
+  if (selector.includes(".")) {
+    const backtick = '`';
+    selector = backtick.concat(selector, backtick);
+  } else {
     selector = '"' + selector + '"';
   }
   selector = "data." + selector;
